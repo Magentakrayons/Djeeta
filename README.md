@@ -12,6 +12,7 @@ A bot made using Rapptz's Discord API. Made for the intention of practicing Pyth
 
     !wiki - Performs a http://gbf.wiki search using the given query.
         Returns the amount of relevant suggestions and provides a URL for each.
+    !events - Fetches the current events from http://gbf.wiki, and returns them.
     
 **General Utility:**
     
