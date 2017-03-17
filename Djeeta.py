@@ -25,26 +25,10 @@ async def on_message(message):
         await asyncio.sleep(5)
         await client.send_message(message.channel, 'Done sleeping')
 
-    elif message.content.startswith('!google'):
-        await asyncio.sleep(1)
-        print(message.content)
-        string = message.content.split()
-        string = string[1:]
-        print(string)
-        if len(string) == 1:
-            returnval = "https://www.google.com/#safe=off&q=" + string[0] + "&*"
-            await client.send_message(message.channel, returnval)
-        else:
-            returnval = ""
-            for i in string:
-                returnval += i
-                if string.index(i) != len(string)-1:
-                    returnval += "+"
-            returnval = "https://www.google.com/#safe=off&q=" + returnval + "&*"
-            await client.send_message(message.channel, returnval)
 
     # Help command
     elif message.content.startswith('!help'):
+        print("!help request made by: ", message.author)
         await asyncio.sleep(1)
         string = message.content.split()
         if len(string) == 1:
@@ -57,7 +41,8 @@ async def on_message(message):
         elif len(string) == 2:
             if "1" in string:
                 text = "Granblue \n" \
-                        "```!wiki - Performs a gbf.wiki search using the given search request.```"
+                        "```!wiki - Performs a gbf.wiki search using the given search request. \n" \
+                       "!!events - Fetches the current events from http://gbf.wiki's front page.```"
                 await client.send_message(message.channel, text)
             elif "2" in string:
                 text = "General Utility \n"\
@@ -68,6 +53,8 @@ async def on_message(message):
     # Granblue Utilities
 
     elif message.content.startswith('!wiki'):
+        print("!wiki request made by: ", message.author)
+        print(message.content)
         await asyncio.sleep(1)
         string = message.content.split()
         string = string[1:]
@@ -89,7 +76,69 @@ async def on_message(message):
             returnMessage += i + "\n"
         await client.send_message(message.channel, returnMessage)
 
+    elif message.content.startswith("!events"):
+        print("!events request made by: ", message.author)
+        link = "http://gbf.wiki"
+        f = requests.get(link)
+        f = f.text.splitlines()
+        searchtext = "<td style=\"vertical-align:top;\">"
+        eventlist = []
+        urls = []
+        for line in range(1, len(f) + 1):
+            if searchtext in f[line]:
+                adding = True
+                nextindex = line + 1
+                nextline = f[line + 1]
+                while adding:
+                    templist = []
+                    text = ""
+                    appending = False
+                    for i in nextline:
+                        if i == "\"" and appending == False:
+                            appending = True
+                        elif appending == True and i != "\"":
+                            text = text + i
+                        elif i == "\"" and len(text) != 0:
+                            appending = False
+                            templist.append(text)
+                            text = ""
+                            if len(templist) == 2:
+                                break
+                    nextindex = nextindex + 1
+                    nextline = f[nextindex]
+                    if len(templist) > 0:
+                        urls.append(templist[0])
+                        eventlist.append(templist[1])
+                    if "</td>" in nextline:
+                        adding = False
+            elif len(eventlist) > 0:
+                break
+        text = "The Current Events include: \n \n"
+        for i in range(len(eventlist)):
+            text = text + eventlist[i] + "\n" + (link + urls[i]) + "\n" + "\n"
+        await client.send_message(message.channel, text)
+
+
+    # General Utilities
+
+    elif message.content.startswith('!google'):
+        print("!google request made by: ", message.author)
+        print(message.content)
+        await asyncio.sleep(1)
+        string = message.content.split()
+        string = string[1:]
+        if len(string) == 1:
+            returnval = "https://www.google.com/#safe=off&q=" + string[0] + "&*"
+            await client.send_message(message.channel, returnval)
+        else:
+            returnval = ""
+            for i in string:
+                returnval += i
+                if string.index(i) != len(string)-1:
+                    returnval += "+"
+            returnval = "https://www.google.com/#safe=off&q=" + returnval + "&*"
+            await client.send_message(message.channel, returnval)
 
 
 
-client.run('BOT TOKEN')
+client.run('TOKEN')
