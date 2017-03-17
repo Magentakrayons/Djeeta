@@ -42,7 +42,7 @@ async def on_message(message):
             if "1" in string:
                 text = "Granblue \n" \
                         "```!wiki - Performs a gbf.wiki search using the given search request. \n" \
-                       "!!events - Fetches the current events from http://gbf.wiki's front page.```"
+                       "!events - Fetches the current events from http://gbf.wiki's front page.```"
                 await client.send_message(message.channel, text)
             elif "2" in string:
                 text = "General Utility \n"\
