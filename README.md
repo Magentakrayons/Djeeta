@@ -17,3 +17,7 @@ A bot made using Rapptz's Discord API. Made for the intention of practicing Pyth
 **General Utility:**
     
     !google - Performs a http://google.com search using the given query. Returns the relevant URL.
+
+Special Thanks to the following for assisting me:
+
+    @Nyaskpi
