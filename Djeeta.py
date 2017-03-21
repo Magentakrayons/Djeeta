@@ -1,10 +1,8 @@
 author = "Magentakrayons"
-
 import discord
 import asyncio
 import requests
 import json
-
 client = discord.Client()
 
 @client.event
@@ -45,8 +43,8 @@ async def on_message(message):
                         "`!wiki - Performs a gbf.wiki search using the given search request. \n" \
                         "   Syntax: !wiki [Search Query] \n" \
                         "!events - Fetches the current events from http://gbf.wiki's front page. \n" \
-                        "!exp - Calculates the EXP needed to reach the desired Weapon/Summon Level. \n" \
-                        "   Syntax: !exp [Desired Lvl] [Current Lvl] [EXP to next Lvl]`"
+                        "!exp - Calculates the EXP needed to reach the desired Weapon/Summon Level. Type 'char' in [Char Modifier] to use Character EXP table. \n" \
+                        "   Syntax: !exp [Desired Lvl] [Current Lvl] [EXP to next Lvl] [Char Modifier]`"
                 await client.send_message(message.channel, text)
             elif "2" in string:
                 text = "**General Utility** \n \n"\
@@ -123,7 +121,10 @@ async def on_message(message):
 
     elif message.content.startswith("!exp"):
         requestMade("!exp", message.author)
-        table = open('tables/exp.txt', 'r')
+        if "char" in message.content:
+            table = open('tables/charexp.txt','r')
+        else:
+            table = open('tables/exp.txt', 'r')
         text = message.content.split()
         uplvl = int(text[1])
         lowlvl = int(text[2])
@@ -163,4 +164,4 @@ def requestMade(type, author):
     print(type, "request made by: ", author)
 
 
-client.run('BOT TOKEN')
+client.run('TOKEN')
