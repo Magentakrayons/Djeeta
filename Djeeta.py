@@ -134,7 +134,6 @@ async def on_message(message):
             pointer = table.readline()
         pointer = pointer.split()
         additive = int(pointer[1])-expleft
-        print(additive)
         currentexp = int(pointer[2]) + additive
         for i in range(uplvl - lowlvl):
             pointer = table.readline()
