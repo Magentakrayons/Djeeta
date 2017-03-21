@@ -43,7 +43,7 @@ async def on_message(message):
                         "`!wiki - Performs a gbf.wiki search using the given search request. \n" \
                         "   Syntax: !wiki [Search Query] \n" \
                         "!events - Fetches the current events from http://gbf.wiki's front page. \n" \
-                        "!exp - Calculates the EXP needed to reach the desired Weapon/Summon Level. Type 'char' in [Char Modifier] to use Character EXP table. \n" \
+                        "!exp - Calculates the EXP needed to reach the desired Weapon/Summon Level. Type 'char' in [Char Modifier] to calculate Character EXP instead. \n" \
                         "   Syntax: !exp [Desired Lvl] [Current Lvl] [EXP to next Lvl] [Char Modifier]`"
                 await client.send_message(message.channel, text)
             elif "2" in string:
@@ -129,11 +129,14 @@ async def on_message(message):
         uplvl = int(text[1])
         lowlvl = int(text[2])
         expleft = int(text[3])
-        for i in range(-1, lowlvl):
+        pointer = ""
+        for i in range(lowlvl):
             pointer = table.readline()
         pointer = pointer.split()
-        currentexp = int(pointer[2]) + (int(pointer[1]) - int(expleft))
-        for i in range(uplvl - lowlvl -1):
+        additive = int(pointer[1])-expleft
+        print(additive)
+        currentexp = int(pointer[2]) + additive
+        for i in range(uplvl - lowlvl):
             pointer = table.readline()
         pointer = pointer.split()
         upperexp = int(pointer[2])
@@ -164,4 +167,4 @@ def requestMade(type, author):
     print(type, "request made by: ", author)
 
 
-client.run('TOKEN')
+client.run('BOT TOKEN')
