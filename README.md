@@ -13,8 +13,8 @@ A bot made using Rapptz's Discord API. Made for the intention of practicing Pyth
     !wiki - Performs a http://gbf.wiki search using the given query.
         Syntax: !wiki [Search Query]
     !events - Fetches the current events from http://gbf.wiki, and returns them.
-    !exp - Calculates the EXP needed to reach the desired Weapon/Summon Level.
-        Syntax: !exp [Desired Lvl] [Current Lvl] [EXP to next Lvl]
+    !exp - Calculates the EXP needed to reach the desired Weapon/Summon Level. Type 'char' into the [Char Modifier] to calculate Character EXP instead.
+        Syntax: !exp [Desired Lvl] [Current Lvl] [EXP to next Lvl] [Char Modifier]
     
 **General Utility:**
     
