@@ -143,6 +143,7 @@ async def on_message(message):
         exp = upperexp - currentexp
         string = "Amount of EXP needed: " + str(exp)
         await client.send_message(message.channel, string)
+        table.close()
 
     # General Utilities
 
