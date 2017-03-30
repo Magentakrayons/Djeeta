@@ -148,6 +148,7 @@ async def on_message(message):
         table.close()
 
     elif message.content.startswith('!skill'):
+        requestMade("!skill", message.author)
         userInput = message.content.split()
         type = userInput[1]
         type = type.upper()
