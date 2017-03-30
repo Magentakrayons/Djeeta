@@ -1,5 +1,5 @@
 # Djeeta.py
-A bot made using Rapptz's Discord API. Made for the intention of practicing Python, as well as providing utility to Granblue Fantasy players. Currently Utilizes the following libraries:
+A bot made using Rapptz's Discord API. Made for the intention of practicing Python, as well as providing utility to Granblue Fantasy players. Mostly for my own personal use. Currently Utilizes the following libraries:
 
     discord
     asyncio
@@ -11,8 +11,11 @@ A bot made using Rapptz's Discord API. Made for the intention of practicing Pyth
 **Granblue Fantasy:**
 
     !wiki - Performs a http://gbf.wiki search using the given query.
-        Returns the amount of relevant suggestions and provides a URL for each.
+        Syntax: !wiki [Search Query]
     !events - Fetches the current events from http://gbf.wiki, and returns them.
+    !exp - Calculates the EXP needed to reach the desired Weapon/Summon Level. 
+        Type 'char' into the [Char Modifier] to calculate Character EXP instead.
+        Syntax: !exp [Desired Lvl] [Current Lvl] [EXP to next Lvl] [Char Modifier]
     
 **General Utility:**
     

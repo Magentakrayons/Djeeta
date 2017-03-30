@@ -1,8 +1,8 @@
+author = "Magentakrayons"
 import discord
 import asyncio
 import requests
 import json
-
 client = discord.Client()
 
 @client.event
@@ -28,34 +28,34 @@ async def on_message(message):
 
     # Help command
     elif message.content.startswith('!help'):
-        print("!help request made by: ", message.author)
-        await asyncio.sleep(1)
+        requestMade("!help", message.author)
         string = message.content.split()
         if len(string) == 1:
             text = "Hi, I'm Djeeta Bot! \n" \
                     "Please use `!help number` to know more about a category. \n \n" \
-                    "**Commands**"\
-                    "```1. Granblue \n" \
-                    "2. General Utilities```"
+                    "**Commands** \n"\
+                    "`1. Granblue Fantasy \n" \
+                    "2. General Utilities`"
             await client.send_message(message.channel, text)
         elif len(string) == 2:
             if "1" in string:
-                text = "Granblue \n" \
-                        "```!wiki - Performs a gbf.wiki search using the given search request. \n" \
-                       "!events - Fetches the current events from http://gbf.wiki's front page.```"
+                text = "**Granblue Fantasy** \n \n" \
+                        "`!wiki - Performs a gbf.wiki search using the given search request. \n" \
+                        "   Syntax: !wiki [Search Query] \n" \
+                        "!events - Fetches the current events from http://gbf.wiki's front page. \n" \
+                        "!exp - Calculates the EXP needed to reach the desired Weapon/Summon Level. Type 'char' in [Char Modifier] to calculate Character EXP instead. \n" \
+                        "   Syntax: !exp [Desired Lvl] [Current Lvl] [EXP to next Lvl] [Char Modifier]`"
                 await client.send_message(message.channel, text)
             elif "2" in string:
-                text = "General Utility \n"\
-                        "```!google - Performs a Google search using the given search request.```"
+                text = "**General Utility** \n \n"\
+                        "`!google - Performs a Google search using the given search request.`"
                 await client.send_message(message.channel, text)
 
 
     # Granblue Utilities
 
     elif message.content.startswith('!wiki'):
-        print("!wiki request made by: ", message.author)
-        print(message.content)
-        await asyncio.sleep(1)
+        requestMade("!wiki", message.author)
         string = message.content.split()
         string = string[1:]
         if len(string) <= 1:
@@ -69,6 +69,7 @@ async def on_message(message):
         url = "https://gbf.wiki/api.php?action=opensearch&format=json&formatversion=2&search="+userInput
         t = requests.get(url).json()
         query = t[0]
+        query = query.replace("_"," ")
         fullUrl = t[3]
         await client.send_message(message.channel,str(len(fullUrl)) + " matches for: " + query)
         returnMessage = ""
@@ -77,7 +78,7 @@ async def on_message(message):
         await client.send_message(message.channel, returnMessage)
 
     elif message.content.startswith("!events"):
-        print("!events request made by: ", message.author)
+        requestMade("!events", message.author)
         link = "http://gbf.wiki"
         f = requests.get(link)
         f = f.text.splitlines()
@@ -118,13 +119,36 @@ async def on_message(message):
             text = text + eventlist[i] + "\n" + (link + urls[i]) + "\n" + "\n"
         await client.send_message(message.channel, text)
 
+    elif message.content.startswith("!exp"):
+        requestMade("!exp", message.author)
+        if "char" in message.content:
+            table = open('tables/charexp.txt','r')
+        else:
+            table = open('tables/exp.txt', 'r')
+        text = message.content.split()
+        uplvl = int(text[1])
+        lowlvl = int(text[2])
+        expleft = int(text[3])
+        pointer = ""
+        for i in range(lowlvl):
+            pointer = table.readline()
+        pointer = pointer.split()
+        additive = int(pointer[1])-expleft
+        currentexp = int(pointer[2]) + additive
+        for i in range(uplvl - lowlvl):
+            pointer = table.readline()
+        pointer = pointer.split()
+        upperexp = int(pointer[2])
+
+        exp = upperexp - currentexp
+        string = "Amount of EXP needed: " + str(exp)
+        await client.send_message(message.channel, string)
+        table.close()
 
     # General Utilities
 
     elif message.content.startswith('!google'):
-        print("!google request made by: ", message.author)
-        print(message.content)
-        await asyncio.sleep(1)
+        requestMade("!google", message.author)
         string = message.content.split()
         string = string[1:]
         if len(string) == 1:
@@ -139,6 +163,8 @@ async def on_message(message):
             returnval = "https://www.google.com/#safe=off&q=" + returnval + "&*"
             await client.send_message(message.channel, returnval)
 
+def requestMade(type, author):
+    print(type, "request made by: ", author)
 
 
-client.run('TOKEN')
+client.run('BOT TOKEN')
