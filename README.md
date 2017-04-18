@@ -16,10 +16,13 @@ A bot made using Rapptz's Discord API. Made for the intention of practicing Pyth
     !exp - Calculates the EXP needed to reach the desired Weapon/Summon Level. 
         Type 'char' into the [Char Modifier] to calculate Character EXP instead.
         Syntax: !exp [Desired Lvl] [Current Lvl] [EXP to next Lvl] [Char Modifier]
+    !skill - Returns the suggested skill fodder based on Rarity and Current Skill Level. 
+        Rarity accepts keywords 'SR', 'SSR', 'Bahamut' and 'Seraph'.
+        Syntax: !skill [Rarity] [Current Skill Level]
     
 **General Utility:**
     
-    !google - Performs a http://google.com search using the given query. Returns the relevant URL.
+    !google - Performs a http://www.google.com search using the given query. Returns the relevant URL.
 
 Special Thanks to the following for assisting me:
 

@@ -44,7 +44,9 @@ async def on_message(message):
                         "   Syntax: !wiki [Search Query] \n" \
                         "!events - Fetches the current events from http://gbf.wiki's front page. \n" \
                         "!exp - Calculates the EXP needed to reach the desired Weapon/Summon Level. Type 'char' in [Char Modifier] to calculate Character EXP instead. \n" \
-                        "   Syntax: !exp [Desired Lvl] [Current Lvl] [EXP to next Lvl] [Char Modifier]`"
+                        "   Syntax: !exp [Desired Lvl] [Current Lvl] [EXP to next Lvl] [Char Modifier] \n" \
+                        "!skill - Returns the suggested skill fodder based on Rarity and Current Skill Level. Rarity accepts keywords 'SR', 'SSR', 'Bahamut' and 'Seraph'. \n" \
+                        "   Syntax: !skill [Rarity] [Current Skill Level]`"
                 await client.send_message(message.channel, text)
             elif "2" in string:
                 text = "**General Utility** \n \n"\
@@ -142,6 +144,34 @@ async def on_message(message):
 
         exp = upperexp - currentexp
         string = "Amount of EXP needed: " + str(exp)
+        await client.send_message(message.channel, string)
+        table.close()
+
+    elif message.content.startswith('!skill'):
+        requestMade("!skill", message.author)
+        userInput = message.content.split()
+        type = userInput[1]
+        type = type.upper()
+        level = int(userInput[2])
+
+        if type == "SSR":
+            level = level + 10
+        elif type == "BAHAMUT" or type == "SERAPH":
+            level = level + 25
+        if level < 1 or level == 10 or level == 25 or level > 34:
+            await client.send_message(message.channel,"Invalid Level. \nPlease use !help to see !skill's syntax.")
+        else:
+            table = open('tables/skill.txt', 'r')
+            for k in range(level):
+                line = table.readline()
+            line = line.split(',')
+            string = ""
+            for i in range(len(line)):
+                string = string + line[i]
+                if i != len(line) - 1:
+                    string = string + "\nor "
+            string = string + "```"
+            string = "To reach the next skill level, you can use:" + "\n```" + string
         await client.send_message(message.channel, string)
         table.close()
 

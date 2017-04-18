@@ -1,0 +1,34 @@
+1x SR,4x R,2x Fury Pebble
+2x SR,8x R,4x Fury Stone
+3x SR + 1x R,12x R,1x Fury Stone(S.Lv2) + 3x R
+4x SR,8x Fury Pebble
+5x SR,2x Fury Stone(S.Lv2) + 1x R,10x Fury Pebble
+6x SR + 1x R,1x SR + 2x Fury Stone(S.Lv2) + 1x R
+7x SR + R,2x SR + 2x
+8x SR,4x SR(S.Lv2)
+9x SR,1x SSR,3x Fury Stone(S.Lv2) + 2x SR
+// SSR Table
+2x SR,8x R
+4x SR,8x Fury Pebble
+6x SR + R,1x SR + 2x Fury Stone(S.Lv2) + 1x R
+8x SR,4x SR(S.Lv2)
+10x SR,1x SSR
+9x SR + 1x Fury Stone(S.Lv2) + 3x R,5x Fury Stone(S.Lv2),12x SR + 1x R
+5x Fury Stone(S.Lv2) + 2x SR,1x SSR(S.Lv2),14x SR
+6x Fury Stone(S.Lv2) + 7x R,1x SSR(S.Lv2),16x SR
+7x Fury Stone(S.Lv2) + 1x Fury Stone,1x SSR(S.Lv2),18x SR
+1x SSR(S.Lv2),20x SR
+1x SSR(S.Lv2) + 2x SR
+1x SSR(S.Lv2) + 4x SR,1x SSR(S.Lv3),10x Fury Stone(S.Lv2)
+1x SSR(S.Lv2) + 6x SR + 1x R,1x SSR(S.Lv3),1x SSR(S.Lv2) + 1x SR + 2x Fury Stone(S.Lv2) + 1x R,11x Fury Stone(S.Lv2)
+1x SSR(S.Lv2) + 8x SR,1x SSR(S.Lv3),1x SSR(S.Lv2) + 2x Fury Stone(S.Lv2) + 1x Fury Stone
+// Bahamut and SSR Seraphic Weapons
+10x SR
+1x SSR(S.Lv2),20x SR
+1x SSR(S.Lv3),10x Fury Stone(S.Lv2) + 6x SR
+1x SSR(S.Lv4),2x SSR(S.Lv2),20x SR(S.Lv2)
+1x SSR(S.Lv5),1x SSR(S.Lv3) + 1x SSR(S.Lv2)
+1x SSR(S.Lv6),2x SSR(S.Lv3),10x Fury Stone(S.Lv3) + 10x Fury Stone(S.Lv2)
+1x SSR(S.Lv7),1x SSR(S.Lv4) + 1x SSR(S.Lv3)
+1x SSR(S.Lv8),2x SSR(S.Lv4),2x SSR(S.Lv3) + 1x SSR(S.Lv2),1x SSR(S.Lv6) + 10x SR(S.Lv2)
+1x SSR(S.Lv9),3x SSR(S.Lv3),1x SSR(S.Lv5) + 1x SSR(S.Lv4),1x SSR(S.Lv6) + 1x SSR(S.Lv3),1x SSR(S.Lv6) + 15x SR(S.Lv2)
