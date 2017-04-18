@@ -84,42 +84,34 @@ async def on_message(message):
         link = "http://gbf.wiki"
         f = requests.get(link)
         f = f.text.splitlines()
-        searchtext = "<td style=\"vertical-align:top;\">"
-        eventlist = []
-        urls = []
-        for line in range(1, len(f) + 1):
-            if searchtext in f[line]:
-                adding = True
-                nextindex = line + 1
-                nextline = f[line + 1]
-                while adding:
-                    templist = []
-                    text = ""
-                    appending = False
-                    for i in nextline:
-                        if i == "\"" and appending == False:
-                            appending = True
-                        elif appending == True and i != "\"":
-                            text = text + i
-                        elif i == "\"" and len(text) != 0:
-                            appending = False
-                            templist.append(text)
-                            text = ""
-                            if len(templist) == 2:
-                                break
-                    nextindex = nextindex + 1
-                    nextline = f[nextindex]
-                    if len(templist) > 0:
-                        urls.append(templist[0])
-                        eventlist.append(templist[1])
-                    if "</td>" in nextline:
-                        adding = False
-            elif len(eventlist) > 0:
+        searchtext = "Current Events"
+        eventnames = []
+        eventurls = []
+        finished = False
+        for i in range(len(f) + 1):
+            if finished:
                 break
+            elif searchtext in f[i]:
+                adding = True
+                i = i + 8
+                while adding:
+                    line = f[i]
+                    line = line.split('"')
+                    linkend = line[1]
+                    title = line[3]
+                    url = link + linkend
+                    eventurls.append(url)
+                    eventnames.append(title)
+                    i = i + 1
+                    if "</p>" in f[i]:
+                        adding = False
+                        finished = True
+
         text = "The Current Events include: \n \n"
-        for i in range(len(eventlist)):
-            text = text + eventlist[i] + "\n" + (link + urls[i]) + "\n" + "\n"
+        for i in range(len(eventnames)):
+            text = text + eventnames[i] + "\n" + eventurls[i] + "\n\n"
         await client.send_message(message.channel, text)
+        del f
 
     elif message.content.startswith("!exp"):
         requestMade("!exp", message.author)
