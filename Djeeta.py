@@ -173,6 +173,7 @@ async def on_message(message):
             string = string + "```"
             string = "To reach the next skill level, you can use:" + "\n```" + string
         await client.send_message(message.channel, string)
+        table.close()
 
     # General Utilities
 
