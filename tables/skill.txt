@@ -32,3 +32,8 @@
 1x SSR(S.Lv7),1x SSR(S.Lv4) + 1x SSR(S.Lv3)
 1x SSR(S.Lv8),2x SSR(S.Lv4),2x SSR(S.Lv3) + 1x SSR(S.Lv2),1x SSR(S.Lv6) + 10x SR(S.Lv2)
 1x SSR(S.Lv9),3x SSR(S.Lv3),1x SSR(S.Lv5) + 1x SSR(S.Lv4),1x SSR(S.Lv6) + 1x SSR(S.Lv3),1x SSR(S.Lv6) + 15x SR(S.Lv2)
+1x SSR(S.Lv10),2x SSR(S.Lv5),2x SSR(S.Lv3) + 2x SSR(S.Lv2),1x SSR(S.Lv4) + 2x SSR(S.Lv3)
+1x SSR(S.Lv6) + 1x SSR(S.Lv5),3x SSR(S.Lv3) + 1x SSR(S.Lv2),2x SSR(S.Lv4) + 1x SSR(S.Lv3)
+2x SSR(S.Lv6),4x SSR(S.Lv3),3x SSR(S.Lv4)
+1x SSR(S.Lv7) + 1x SSR(S.Lv6),1x SSR(S.Lv4) + 3x SSR(S.Lv3),1x SSR(S.Lv5) + 2x SSR(S.Lv4)
+2x SSR(S.Lv7),2x SSR(S.Lv5) + 1x SSR(S.Lv4),2x SSR(S.Lv4) + 2x SSR(S.Lv3)
