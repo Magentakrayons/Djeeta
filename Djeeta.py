@@ -64,4 +64,4 @@ def requestMade(type, author):
     print(type, "request made by: ", author)
 
 
-client.run('Mjk3MDQ2ODU3NDIxNTUzNjY1.C77F9Q.2MkwcJPeLQ9JbYZBPGVRX00xEjo')
+client.run('BOT TOKEN')
