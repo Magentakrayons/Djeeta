@@ -114,3 +114,36 @@ def skill(message):
         text += "```"
         text = "To reach the next skill level, you can use:" + "\n```" + text
         return text
+
+    
+def servertime(datetime,timezone):
+    month = {
+        1: "Jan.",
+        2: "Feb.",
+        3: "Mar.",
+        4: "Apr.",
+        5: "May",
+        6: "Jun.",
+        7: "Jul.",
+        8: "Aug.",
+        9: "Sep.",
+        10: "Oct.",
+        11: "Nov.",
+        12: "Dec."}
+    t = timezone('Japan')
+    t = datetime.now(t)
+    if t.hour == 0:
+        meridiem = "AM"
+        hour = 12
+    elif t.hour > 11:
+        meridiem = "PM"
+        hour = t.hour - 12
+    else:
+        meridiem = "AM"
+        hour = t.hour
+
+    time = "The Server Time is currently: \n" \
+           "Date: " + month[t.month] + " " + str(t.day) + "\n" + \
+           "Time: " + str(hour) + ":" + str(t.minute) + ":" + str(t.second) + " " + meridiem
+    return time    
+

@@ -5,20 +5,23 @@ A bot made using Rapptz's Discord API. Made for the intention of practicing Pyth
     asyncio
     json
     requests
+    "datetime" from package datetime
+    "timezone" from package pytz
     
-# Djeeta can perform the following actions from the following categories:
+Djeeta can perform the following actions from the following categories:
     
 **Granblue Fantasy:**
 
     !wiki - Performs a http://gbf.wiki search using the given query.
         Syntax: !wiki [Search Query]
-    !events - Fetches the current events from http://gbf.wiki, and returns them.
     !exp - Calculates the EXP needed to reach the desired Weapon/Summon Level. 
-        Type 'char' into the [Char Modifier] to calculate Character EXP instead.
-        Syntax: !exp [Desired Lvl] [Current Lvl] [EXP to next Lvl] [Char Modifier]
+        Type 'char' into the [Char] to calculate Character EXP instead.
+        Syntax: !exp [Desired Lvl] [Current Lvl] [EXP to next Lvl] [Char]
     !skill - Returns the suggested skill fodder based on Rarity and Current Skill Level. 
         Rarity accepts keywords 'SR', 'SSR', 'Bahamut' and 'Seraph'.
         Syntax: !skill [Rarity] [Current Skill Level]
+    !events - Fetches the current events from http://gbf.wiki, and returns them.
+    !servertime - Return the current Server Time.
     
 **General Utility:**
     
