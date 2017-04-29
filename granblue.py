@@ -146,3 +146,4 @@ def servertime(datetime,timezone):
            "Date: " + month[t.month] + " " + str(t.day) + "\n" + \
            "Time: " + str(hour) + ":" + str(t.minute) + ":" + str(t.second) + " " + meridiem
     return time    
+
