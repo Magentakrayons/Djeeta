@@ -51,6 +51,11 @@ async def on_message(message):
         text = skill(message.content)
         await client.send_message(message.channel, text)
 
+    elif message.content.startswith('!servertime'):
+        requestMade("!servertime", message.author)
+        text = servertime(datetime,timezone)
+        await client.send_message(message.channel,text)
+        
     # General Utilities
 
     elif message.content.startswith('!google'):
